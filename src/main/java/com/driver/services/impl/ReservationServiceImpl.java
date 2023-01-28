@@ -64,8 +64,7 @@ public class ReservationServiceImpl implements ReservationService {
             }
         }
         if(user == null || parkingLot == null || actualSpot == null){
-//            throw  new Exception("Cannot make reservation");
-            return null;
+            throw  new Exception("Cannot make reservation");
         }
 
         actualSpot.setOccupied(true);
@@ -77,13 +76,19 @@ public class ReservationServiceImpl implements ReservationService {
         List<Reservation> userReservationList = user.getReservationList();
         userReservationList.add(reservation);
 
+        userRepository3.save(user);
+
         List<Reservation> actualSpotReservationList = actualSpot.getReservationList();
         actualSpotReservationList.add(reservation);
+
+        spotRepository3.save(actualSpot);
 
         Payment payment = new Payment();
         payment.setPaymentCompleted(false);
         reservation.setPayment(payment);
         reservationRepository3.save(reservation);
+
+
 
         return reservation;
     }

@@ -27,7 +27,8 @@ public class PaymentController {
             throw new Exception("Insufficient Amount");
         }
         catch (Exception e){
-            throw new Exception("Payment mode not detected");
+            throw new Exception("fail");
+
         }
         return payment;
     }
