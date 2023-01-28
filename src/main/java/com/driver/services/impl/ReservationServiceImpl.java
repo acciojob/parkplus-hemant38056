@@ -38,7 +38,7 @@ public class ReservationServiceImpl implements ReservationService {
         for(Spot spot : spotList){
             int spotsize = 2;
             if(spot.getSpotType().equals(SpotType.TWO_WHEELER)){
-                if(spotsize >= size && spot.isOccupied() == false){
+                if(spotsize >= size && spot.getOccupied() == false){
                     actualSpot = spot;;
                 }
             }
@@ -48,7 +48,7 @@ public class ReservationServiceImpl implements ReservationService {
             for (Spot spot : spotList){
                 int spotsize = 4;
                 if(spot.getSpotType().equals(SpotType.FOUR_WHEELER)){
-                    if(spotsize >= size && spot.isOccupied() == false){
+                    if(spotsize >= size && spot.getOccupied() == false){
                         actualSpot = spot;
                     }
                 }
@@ -58,7 +58,7 @@ public class ReservationServiceImpl implements ReservationService {
         if(actualSpot == null){
             for (Spot spot : spotList){
                 int spotsize = 5;
-                if(spotsize >= size && spot.isOccupied() == false){
+                if(spotsize >= size && spot.getOccupied() == false){
                     actualSpot = spot;
                 }
             }
