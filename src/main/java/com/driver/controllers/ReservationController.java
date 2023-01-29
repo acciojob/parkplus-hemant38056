@@ -25,7 +25,8 @@ public class ReservationController {
             reservation = reservationService.reserveSpot(userId, parkingLotId, timeInHours, numberOfWheels);
         }
         catch (Exception e){
-            throw new Exception("Cannot make reservation");
+//            throw new Exception("Cannot make reservation");
+            return null;
         }
         return reservation;
     }
