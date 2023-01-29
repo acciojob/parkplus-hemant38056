@@ -54,10 +54,11 @@ public class PaymentServiceImpl implements PaymentService {
         }
 
 
-        paymentRepository2.save(payment);
+//        paymentRepository2.save(payment);
 
         spot.setOccupied(false);
 
+        reservation.setPayment(payment);
         reservationRepository2.save(reservation);
 
 
