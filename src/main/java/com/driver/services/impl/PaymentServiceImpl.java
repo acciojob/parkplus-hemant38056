@@ -41,7 +41,7 @@ public class PaymentServiceImpl implements PaymentService {
 //        }
 
 
-        Payment payment = reservation.getPayment();
+        Payment payment = new Payment();
         payment.setPaymentCompleted(true);
         if(payMode.equals("CASH")){
             payment.setPaymentMode(PaymentMode.CASH);
