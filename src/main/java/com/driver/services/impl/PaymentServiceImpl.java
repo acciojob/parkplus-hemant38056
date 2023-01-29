@@ -31,21 +31,25 @@ public class PaymentServiceImpl implements PaymentService {
         if(amountSent < bill){
             throw new RuntimeException("Insufficient Amount");
         }
-
-        if(!mode.equals(PaymentMode.CARD) && !mode.equals(PaymentMode.UPI) && !mode.equals(PaymentMode.CASH)){
-            throw new Exception("fail");
+        String payMode = mode.toUpperCase();
+        if(!payMode.equals("CARD") && !payMode.equals("UPI") && !payMode.equals("CASH")){
+            throw new Exception("Payment mode not detected");
         }
+
+//        if(!mode.equals(PaymentMode.CARD) && !mode.equals(PaymentMode.UPI) && !mode.equals(PaymentMode.CASH)){
+//            throw new Exception("fail");
+//        }
 
 
         Payment payment = reservation.getPayment();
         payment.setPaymentCompleted(true);
-        if(mode.equals("CASH")){
+        if(payMode.equals("CASH")){
             payment.setPaymentMode(PaymentMode.CASH);
         }
-        else if(mode.equals("CARD")){
+        else if(payMode.equals("CARD")){
             payment.setPaymentMode(PaymentMode.CARD);
         }
-        else {
+        else if(payMode.equals("UPI")){
             payment.setPaymentMode(PaymentMode.UPI);
         }
 
@@ -55,6 +59,8 @@ public class PaymentServiceImpl implements PaymentService {
         spot.setOccupied(false);
 
         reservationRepository2.save(reservation);
+
+
 
         return payment;
     }
