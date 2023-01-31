@@ -3,6 +3,7 @@ package com.driver.model;
 import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
+import com.driver.model.SpotType;
 
 @Entity
 @Table
@@ -11,6 +12,8 @@ public class Spot {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private int id;
+
+
     private SpotType spotType;
     private int pricePerHour;
 
@@ -21,11 +24,13 @@ public class Spot {
 
     }
 
-    public Spot(SpotType spotType, int pricePerHour, boolean occupied){
+    public Spot(SpotType spotType, int pricePerHour){
         this.spotType = spotType;
         this.pricePerHour = pricePerHour;
-        this.occupied = occupied;
+        this.occupied = false;
     }
+
+
 
     public int getId() {
         return id;
