@@ -23,6 +23,9 @@ public class ParkingLot {
         this.name = name;
         this.address = address;
     }
+    public ParkingLot(String name){
+        this.name = name;
+    }
 
 
     public int getId() {
