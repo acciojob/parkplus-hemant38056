@@ -16,4 +16,6 @@ public interface ParkingLotService {
     Spot addSpot(int parkingLotId, Integer numberOfWheels, Integer pricePerHour);
 
     Integer countSpot(int parkingLotId);
+
+    Integer countReserveSpot(int spotId);
 }

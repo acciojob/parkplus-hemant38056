@@ -2,6 +2,7 @@ package com.driver.controllers;
 
 import com.driver.services.ParkingLotService;
 import com.driver.services.impl.ParkingLotServiceImpl;
+import io.swagger.models.auth.In;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -60,5 +61,12 @@ public class ParkingLotController {
         Integer count = parkingLotService.countSpot(parkingLotId);
         return new ResponseEntity<>(count, HttpStatus.OK);
     }
+
+    @GetMapping("/spotReserves")
+    public ResponseEntity<Integer> countReservationSpot(@RequestParam Integer spotId){
+        Integer count = parkingLotService.countReserveSpot(spotId);
+        return new ResponseEntity<>(count, HttpStatus.OK);
+    }
+
 
 }

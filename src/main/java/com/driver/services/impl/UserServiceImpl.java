@@ -37,4 +37,10 @@ public class UserServiceImpl implements UserService {
         User user = new User(name, phoneNumber, password);
         userRepository4.save(user);
     }
+
+    @Override
+    public Integer countReserves(Integer userId){
+        User user = userRepository4.findById(userId).get();
+        return user.getReservationList().size();
+    }
 }

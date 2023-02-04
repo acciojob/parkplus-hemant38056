@@ -27,4 +27,10 @@ public class UserController {
     public void deleteUser(@RequestParam Integer userId){
         userService.deleteUser(userId);
     }
+
+    @GetMapping("/countReserves")
+    public ResponseEntity<Integer> countReserves(@RequestParam Integer userId){
+        Integer count = userService.countReserves(userId);
+        return new ResponseEntity<>(count, HttpStatus.OK);
+    }
 }

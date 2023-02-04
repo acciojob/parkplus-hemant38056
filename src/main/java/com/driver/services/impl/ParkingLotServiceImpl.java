@@ -6,6 +6,7 @@ import com.driver.model.SpotType;
 import com.driver.repository.ParkingLotRepository;
 import com.driver.repository.SpotRepository;
 import com.driver.services.ParkingLotService;
+import io.swagger.models.auth.In;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -131,5 +132,11 @@ public class ParkingLotServiceImpl implements ParkingLotService {
         ParkingLot parkingLot = parkingLotRepository1.findById(parkingLotId).get();
         List<Spot> spotList = parkingLot.getSpotList();
         return spotList.size();
+    }
+
+    @Override
+    public Integer countReserveSpot(int spotId){
+        Spot spot = spotRepository1.findById(spotId).get();
+        return spot.getReservationList().size();
     }
 }
