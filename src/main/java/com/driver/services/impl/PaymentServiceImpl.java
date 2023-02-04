@@ -40,8 +40,7 @@ public class PaymentServiceImpl implements PaymentService {
 //            throw new Exception("fail");
 //        }
 
-
-        Payment payment = new Payment();
+        Payment payment = reservation.getPayment();
         payment.setPaymentCompleted(true);
         if(payMode.equals("CASH")){
             payment.setPaymentMode(PaymentMode.CASH);
@@ -53,13 +52,32 @@ public class PaymentServiceImpl implements PaymentService {
             payment.setPaymentMode(PaymentMode.UPI);
         }
 
+        spot.setOccupied(false);
+
+        reservationRepository2.save(reservation);
+
+
+//        Payment payment = new Payment();
+//        payment.setPaymentCompleted(true);
+//        if(payMode.equals("CASH")){
+//            payment.setPaymentMode(PaymentMode.CASH);
+//        }
+//        else if(payMode.equals("CARD")){
+//            payment.setPaymentMode(PaymentMode.CARD);
+//        }
+//        else if(payMode.equals("UPI")){
+//            payment.setPaymentMode(PaymentMode.UPI);
+//        }
+
+
+
 
 //        paymentRepository2.save(payment);
 
-        spot.setOccupied(false);
-
-        reservation.setPayment(payment);
-        reservationRepository2.save(reservation);
+//        spot.setOccupied(false);
+//
+//        reservation.setPayment(payment);
+//        reservationRepository2.save(reservation);
 
 
 
