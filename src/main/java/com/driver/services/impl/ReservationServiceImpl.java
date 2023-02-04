@@ -75,13 +75,13 @@ public class ReservationServiceImpl implements ReservationService {
         List<Reservation> spotReservations = reservedSpot.getReservationList();
         spotReservations.add(reservation);
         reservedSpot.setReservationList(spotReservations);
-        spotRepository3.save(reservedSpot);
+//        spotRepository3.save(reservedSpot);
 
         reservation.setUser(user1);
         List<Reservation> userReservations = user1.getReservationList();
         userReservations.add(reservation);
         user1.setReservationList(userReservations);
-        userRepository3.save(user1);
+//        userRepository3.save(user1);
 
         Payment payment = new Payment();
         payment.setPaymentCompleted(false);
