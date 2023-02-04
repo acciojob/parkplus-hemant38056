@@ -55,4 +55,10 @@ public class ParkingLotController {
         return new ResponseEntity<>(HttpStatus.OK);
     }
 
+    @GetMapping("/countSpots")
+    public ResponseEntity<Integer> countSpots(@RequestParam Integer parkingLotId){
+        Integer count = parkingLotService.countSpot(parkingLotId);
+        return new ResponseEntity<>(count, HttpStatus.OK);
+    }
+
 }
